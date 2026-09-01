@@ -3,5 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kinoshita.github.io',
+  site: 'https://whip27.github.io',
+  base: '/kinoshita.github.io',
 });
