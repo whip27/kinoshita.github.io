@@ -84,37 +84,10 @@ export const profileData: ProfileData = {
     "はくまい"
   ],
   publications: {
-    international: [
-      {
-        title: "Measuring Shape Unexpectedness of Exhibits Based on Similarity and Outlier Detection",
-        authors: ["Maho Kinoshita", "Wakana Kuwata", "Hiroaki Ohshima"],
-        venue: "Proceedings of the 27th International Conference on Information Integration and Web Intelligence (iiWAS 2025)",
-        year: "2025年",
-        // url: "https://researchmap.jp/maho_kinoshita"
-      }
-    ],
-    domestic: [
-      {
-        title: "画像インペインティングを用いた展示物外観の意外性分析",
-        authors: ["木下 真帆", "桑田 若菜", "三林 亮太", "大島 裕明"],
-        venue: "第18回データ工学と情報マネジメントに関するフォーラム (DEIM 2026)",
-        year: "2026年3月",
-        // url: "https://researchmap.jp/maho_kinoshita"
-      }
-    ]
+    international: [],
+    domestic: []
   },
-  activities: [
-    {
-      role: "RA",
-      organization: "国立情報学研究所 (National Institute of Informatics, NII)",
-      period: "2025 - 2026"
-    },
-    // {
-    //   role: "学生スタッフ (Student Staff)",
-    //   organization: "NTCIR-19",
-    //   period: "2025 - 2026"
-    // }
-  ],
+  activities: [],
   links: [
     {
       name: "researchmap",

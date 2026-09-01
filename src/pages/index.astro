@@ -19,6 +19,9 @@ const faviconIco = resolveUrl('favicon.ico');
 const pageTitle = `${profileData.name.ja} (${profileData.name.en}) — 研究プロフィール・ポートフォリオ`;
 const pageDescription = `${profileData.name.ja} (${profileData.name.en}) - ${profileData.affiliations.mainJa} ${profileData.title} の研究プロフィール・論文・業績一覧です。`;
 const currentYear = new Date().getFullYear();
+
+const hasPublications = (profileData.publications?.international?.length ?? 0) > 0 || (profileData.publications?.domestic?.length ?? 0) > 0;
+const hasActivities = (profileData.activities?.length ?? 0) > 0;
 ---
 
 <!doctype html>
@@ -228,7 +231,7 @@ const currentYear = new Date().getFullYear();
               </article>
             )}
 
-            <!-- Panel 3: Publications (from researchmap) -->
+            <!-- Panel 3: Publications -->
             <article id="publications" class="panel-section publications-panel">
               <div class="wrap">
                 <header class="entry-header">
@@ -236,110 +239,118 @@ const currentYear = new Date().getFullYear();
                 </header>
 
                 <div class="entry-content">
-                  <p class="section-lead-text">
-                    <a href="https://researchmap.jp/maho_kinoshita" target="_blank" rel="noopener noreferrer" class="text-link">researchmap</a> に登録されている学術論文および学会発表の実績です：
-                  </p>
+                  {hasPublications ? (
+                    <>
+                      <p class="section-lead-text">
+                        <a href="https://researchmap.jp/maho_kinoshita" target="_blank" rel="noopener noreferrer" class="text-link">researchmap</a> に登録されている学術論文および学会発表の実績です：
+                      </p>
 
-                  <!-- International Conferences -->
-                  {profileData.publications.international && profileData.publications.international.length > 0 && (
-                    <div class="pub-category-group">
-                      <h3 class="pub-sub-heading">
-                        <span class="pub-sub-badge">国際会議</span>
-                        <span>国際会議論文 (International Conferences)</span>
-                      </h3>
-                      <div class="pub-items-list">
-                        {profileData.publications.international.map((pub, idx) => (
-                          <div class="pub-card">
-                            <div class="pub-header-row">
-                              <span class="pub-index">[{idx + 1}]</span>
-                              <h4 class="pub-title">{pub.title}</h4>
-                            </div>
-                            <div class="pub-meta">
-                              <p class="pub-authors">
-                                {pub.authors.map((author, aIdx) => (
-                                  <span class={author.includes("Kinoshita") || author.includes("木下") ? "author-highlight" : ""}>
-                                    {author}{aIdx < pub.authors.length - 1 ? ", " : ""}
-                                  </span>
-                                ))}
-                              </p>
-                              <p class="pub-venue">
-                                <span class="venue-name">{pub.venue}</span>
-                                <span class="venue-year">({pub.year})</span>
-                              </p>
-                            </div>
-                            {pub.url && (
-                              <div class="pub-actions">
-                                <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-                                  <span>researchmapで見る</span>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M7 17 17 7"></path>
-                                    <path d="M7 7h10v10"></path>
-                                  </svg>
-                                </a>
+                      <!-- International Conferences -->
+                      {profileData.publications.international && profileData.publications.international.length > 0 && (
+                        <div class="pub-category-group">
+                          <h3 class="pub-sub-heading">
+                            <span class="pub-sub-badge">国際会議</span>
+                            <span>国際会議論文 (International Conferences)</span>
+                          </h3>
+                          <div class="pub-items-list">
+                            {profileData.publications.international.map((pub, idx) => (
+                              <div class="pub-card">
+                                <div class="pub-header-row">
+                                  <span class="pub-index">[{idx + 1}]</span>
+                                  <h4 class="pub-title">{pub.title}</h4>
+                                </div>
+                                <div class="pub-meta">
+                                  <p class="pub-authors">
+                                    {pub.authors.map((author, aIdx) => (
+                                      <span class={author.includes("Kinoshita") || author.includes("木下") ? "author-highlight" : ""}>
+                                        {author}{aIdx < pub.authors.length - 1 ? ", " : ""}
+                                      </span>
+                                    ))}
+                                  </p>
+                                  <p class="pub-venue">
+                                    <span class="venue-name">{pub.venue}</span>
+                                    <span class="venue-year">({pub.year})</span>
+                                  </p>
+                                </div>
+                                {pub.url && (
+                                  <div class="pub-actions">
+                                    <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                      <span>researchmapで見る</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M7 17 17 7"></path>
+                                        <path d="M7 7h10v10"></path>
+                                      </svg>
+                                    </a>
+                                  </div>
+                                )}
                               </div>
-                            )}
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
+
+                      <!-- Domestic Conferences -->
+                      {profileData.publications.domestic && profileData.publications.domestic.length > 0 && (
+                        <div class="pub-category-group">
+                          <h3 class="pub-sub-heading">
+                            <span class="pub-sub-badge domestic-badge">国内学会</span>
+                            <span>国内学会・研究会発表</span>
+                          </h3>
+                          <div class="pub-items-list">
+                            {profileData.publications.domestic.map((pub, idx) => (
+                              <div class="pub-card">
+                                <div class="pub-header-row">
+                                  <span class="pub-index">[{idx + 1}]</span>
+                                  <h4 class="pub-title">{pub.title}</h4>
+                                </div>
+                                <div class="pub-meta">
+                                  <p class="pub-authors">
+                                    {pub.authors.map((author, aIdx) => (
+                                      <span class={author.includes("Kinoshita") || author.includes("木下") ? "author-highlight" : ""}>
+                                        {author}{aIdx < pub.authors.length - 1 ? ", " : ""}
+                                      </span>
+                                    ))}
+                                  </p>
+                                  <p class="pub-venue">
+                                    <span class="venue-name">{pub.venue}</span>
+                                    <span class="venue-year">({pub.year})</span>
+                                  </p>
+                                </div>
+                                {pub.url && (
+                                  <div class="pub-actions">
+                                    <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                      <span>researchmapで見る</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M7 17 17 7"></path>
+                                        <path d="M7 7h10v10"></path>
+                                      </svg>
+                                    </a>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div class="tba-box">
+                      <span class="tba-tag">TBA</span>
+                      <p class="tba-msg">現在準備中です (To Be Announced)</p>
                     </div>
                   )}
-
-                  <!-- Domestic Conferences -->
-                  {profileData.publications.domestic && profileData.publications.domestic.length > 0 && (
-                    <div class="pub-category-group">
-                      <h3 class="pub-sub-heading">
-                        <span class="pub-sub-badge domestic-badge">国内学会</span>
-                        <span>国内学会・研究会発表</span>
-                      </h3>
-                      <div class="pub-items-list">
-                        {profileData.publications.domestic.map((pub, idx) => (
-                          <div class="pub-card">
-                            <div class="pub-header-row">
-                              <span class="pub-index">[{idx + 1}]</span>
-                              <h4 class="pub-title">{pub.title}</h4>
-                            </div>
-                            <div class="pub-meta">
-                              <p class="pub-authors">
-                                {pub.authors.map((author, aIdx) => (
-                                  <span class={author.includes("Kinoshita") || author.includes("木下") ? "author-highlight" : ""}>
-                                    {author}{aIdx < pub.authors.length - 1 ? ", " : ""}
-                                  </span>
-                                ))}
-                              </p>
-                              <p class="pub-venue">
-                                <span class="venue-name">{pub.venue}</span>
-                                <span class="venue-year">({pub.year})</span>
-                              </p>
-                            </div>
-                            {pub.url && (
-                              <div class="pub-actions">
-                                <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-                                  <span>researchmapで見る</span>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M7 17 17 7"></path>
-                                    <path d="M7 7h10v10"></path>
-                                  </svg>
-                                </a>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
                 </div>
               </div>
             </article>
 
             <!-- Panel 4: Academic Activities -->
-            {profileData.activities && profileData.activities.length > 0 && (
-              <article id="activities" class="panel-section activities-panel">
-                <div class="wrap">
-                  <header class="entry-header">
-                    <h2 class="entry-title">学術活動・運営協力</h2>
-                  </header>
-                  <div class="entry-content">
+            <article id="activities" class="panel-section activities-panel">
+              <div class="wrap">
+                <header class="entry-header">
+                  <h2 class="entry-title">学術活動・運営協力</h2>
+                </header>
+                <div class="entry-content">
+                  {hasActivities ? (
                     <div class="activities-table-box">
                       <table class="activities-table">
                         <thead>
@@ -360,10 +371,15 @@ const currentYear = new Date().getFullYear();
                         </tbody>
                       </table>
                     </div>
-                  </div>
+                  ) : (
+                    <div class="tba-box">
+                      <span class="tba-tag">TBA</span>
+                      <p class="tba-msg">現在準備中です (To Be Announced)</p>
+                    </div>
+                  )}
                 </div>
-              </article>
-            )}
+              </div>
+            </article>
 
             <!-- Panel 5: Profiles & Links -->
             <article id="links" class="panel-section links-panel">
@@ -968,6 +984,36 @@ const currentYear = new Date().getFullYear();
   }
 
   /* Publications Section */
+  .tba-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 3rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .tba-tag {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-text-accent);
+    background: rgba(37, 99, 235, 0.08);
+    padding: 0.35rem 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+  }
+
+  .tba-msg {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+  }
+
   .pub-category-group {
     margin-bottom: 2.75rem;
   }
