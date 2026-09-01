@@ -1,17 +1,336 @@
 ---
+import { profileData } from '../data/profile';
 
+const pageTitle = `${profileData.name.ja} (${profileData.name.en}) | Profile`;
+const pageDescription = `${profileData.name.ja} (${profileData.name.en}) - ${profileData.affiliations.mainJa} ${profileData.title} の個人サイトです。`;
+const currentYear = new Date().getFullYear();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <span class="logo-name">{profileData.name.en}</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section class="profile-card">
+        <div class="profile-avatar-container">
+          <img
+            src={profileData.avatar}
+            alt={profileData.name.en}
+            class="profile-avatar"
+            onerror="this.onerror=null; this.src='/avatar.svg';"
+          />
+        </div>
+
+        <div class="profile-content">
+          <div class="profile-header">
+            <h1 class="profile-name">
+              {profileData.name.ja}
+              <span class="name-en">/ {profileData.name.en}</span>
+            </h1>
+            <p class="profile-title">{profileData.title}</p>
+          </div>
+
+          <div class="profile-affiliations">
+            {profileData.affiliations.mainJa && (
+              <p class="affil-main">{profileData.affiliations.mainJa}</p>
+            )}
+            {profileData.affiliations.mainEn && (
+              <p class="affil-en">{profileData.affiliations.mainEn}</p>
+            )}
+            {profileData.affiliations.lab && (
+              <p class="affil-sub">
+                研究室: 
+                <a
+                  href={profileData.affiliations.lab.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {profileData.affiliations.lab.name}
+                </a>
+              </p>
+            )}
+          </div>
+
+          {profileData.bio && <p class="profile-bio">{profileData.bio}</p>}
+
+          {profileData.links && profileData.links.length > 0 && (
+            <div class="profile-links">
+              {profileData.links.map((link) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-btn"
+                >
+                  <span>{link.name}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>© {currentYear} {profileData.name.en} ({profileData.name.ja}). All Rights Reserved.</p>
+        <p class="footer-sub">
+          Powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
+
+<style>
+  :root {
+    --color-bg: #f8fafc;
+    --color-card-bg: #ffffff;
+    --color-text-main: #0f172a;
+    --color-text-muted: #475569;
+    --color-text-subtle: #64748b;
+    --color-primary: #1e40af;
+    --color-primary-light: #eff6ff;
+    --color-primary-hover: #1d4ed8;
+    --color-border: #e2e8f0;
+    --color-badge-bg: #f1f5f9;
+    --font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --max-width: 800px;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #0f172a;
+      --color-card-bg: #1e293b;
+      --color-text-main: #f8fafc;
+      --color-text-muted: #cbd5e1;
+      --color-text-subtle: #94a3b8;
+      --color-primary: #60a5fa;
+      --color-primary-light: rgba(30, 58, 138, 0.2);
+      --color-primary-hover: #93c5fd;
+      --color-border: #334155;
+      --color-badge-bg: #334155;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    line-height: 1.65;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+  }
+
+  .header {
+    background: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+
+  .main-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.25rem;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    display: flex;
+    gap: 2.25rem;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+  }
+
+  .profile-avatar-container {
+    flex-shrink: 0;
+  }
+
+  .profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-border);
+    background-color: var(--color-badge-bg);
+    display: block;
+  }
+
+  .profile-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .profile-name {
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .name-en {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text-subtle);
+    margin-left: 0.35rem;
+  }
+
+  .profile-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 0.25rem;
+  }
+
+  .profile-affiliations {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .affil-main {
+    font-weight: 500;
+  }
+
+  .affil-en {
+    font-size: 0.85rem;
+    color: var(--color-text-subtle);
+  }
+
+  .affil-sub {
+    font-size: 0.88rem;
+    margin-top: 0.25rem;
+  }
+
+  .profile-bio {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    background: var(--color-badge-bg);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+
+  .link-btn:hover {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .footer {
+    background: var(--color-card-bg);
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-subtle);
+    margin-top: auto;
+  }
+
+  .footer-sub {
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 680px) {
+    .profile-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.75rem;
+      gap: 1.5rem;
+    }
+
+    .profile-links {
+      justify-content: center;
+    }
+  }
+</style>
