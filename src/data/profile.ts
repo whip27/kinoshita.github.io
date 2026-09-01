@@ -19,6 +19,9 @@ export interface ProfileData {
   };
   bio: string;
   avatar: string;
+  interests?: string[];
+  email?: string;
+  location?: string;
   links: ProfileLink[];
 }
 
@@ -36,8 +39,15 @@ export const profileData: ProfileData = {
       url: "https://ohshimalab.github.io/",
     },
   },
-  bio: "こんにちは",
+  bio: "兵庫県立大学大学院にて情報科学の研究を行っています。Webマイニングやデータ分析に関心があります。",
   avatar: "/profile.jpg",
+  location: "Kobe / Himeji, Japan",
+  interests: [
+    "Webマイニング",
+    "情報検索・推薦",
+    "データ分析",
+    "ソーシャルメディア分析",
+  ],
   links: [
     {
       name: "ORCID",
