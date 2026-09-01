@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 640" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="deepSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07090e" />
+      <stop offset="40%" stop-color="#0f1422" />
+      <stop offset="80%" stop-color="#181c2b" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="nebulaGlow1" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#1d4ed8" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#07090e" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="nebulaGlow2" cx="75%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#ca8a04" stop-opacity="0.2" />
+      <stop offset="60%" stop-color="#854d0e" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#07090e" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dotGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.07" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="url(#deepSpace)" />
+  <rect width="100%" height="100%" fill="url(#nebulaGlow1)" />
+  <rect width="100%" height="100%" fill="url(#nebulaGlow2)" />
+  <rect width="100%" height="100%" fill="url(#dotGrid)" />
+
+  <!-- Subtle Constellation / Geometric Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" fill="none">
+    <path d="M 120 280 L 260 220 L 420 310 L 580 180 L 740 240 L 920 150 L 1150 220 L 1380 160 L 1600 270 L 1800 210" />
+    <circle cx="120" cy="280" r="3" fill="#ffffff" fill-opacity="0.4" />
+    <circle cx="260" cy="220" r="4" fill="#60a5fa" fill-opacity="0.6" />
+    <circle cx="420" cy="310" r="3" fill="#ffffff" fill-opacity="0.4" />
+    <circle cx="580" cy="180" r="4" fill="#fde047" fill-opacity="0.6" />
+    <circle cx="740" cy="240" r="3" fill="#ffffff" fill-opacity="0.4" />
+    <circle cx="920" cy="150" r="5" fill="#60a5fa" fill-opacity="0.7" />
+    <circle cx="1150" cy="220" r="3" fill="#ffffff" fill-opacity="0.4" />
+    <circle cx="1380" cy="160" r="4" fill="#fde047" fill-opacity="0.6" />
+    <circle cx="1600" cy="270" r="3" fill="#ffffff" fill-opacity="0.4" />
+    <circle cx="1800" cy="210" r="4" fill="#ffffff" fill-opacity="0.5" />
+  </g>
+
+  <!-- Bottom Vignette Fade -->
+  <linearGradient id="fadeDown" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+    <stop offset="70%" stop-color="#000000" stop-opacity="0.3" />
+    <stop offset="100%" stop-color="#07090e" stop-opacity="0.9" />
+  </linearGradient>
+  <rect width="100%" height="100%" fill="url(#fadeDown)" />
+</svg>
+
