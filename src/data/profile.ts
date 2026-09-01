@@ -32,38 +32,31 @@ export const profileData: ProfileData = {
   },
   title: "博士前期課程 / 大学院生 (Master`s Student)",
   affiliations: {
-    mainJa: "兵庫県立大学 大学院〇〇研究科",
+    mainJa: "兵庫県立大学 大学院情報科学研究科",
     mainEn: "Graduate School of Information Science, University of Hyogo",
     lab: {
       name: "大島研究室 (Ohshima Lab.)",
       url: "https://ohshimalab.github.io/",
     },
   },
-  bio: "兵庫県立大学大学院にて情報科学の研究を行っています。Webマイニングやデータ分析に関心があります。",
-  avatar: "/profile.jpg",
-  location: "Kobe / Himeji, Japan",
+  bio: "とりあえず作ってみました",
+  location: "Kobe, Japan",
   interests: [
-    "Webマイニング",
-    "情報検索・推薦",
-    "データ分析",
-    "ソーシャルメディア分析",
+    "おにく",
+    "おさかな"
   ],
   links: [
     {
       name: "ORCID",
-      url: "https://orcid.org/",
+      url: "https://orcid.org/0009-0007-9914-7609",
     },
     {
       name: "researchmap",
-      url: "https://researchmap.jp/",
+      url: "https://researchmap.jp/maho_kinoshita",
     },
     {
       name: "GitHub",
-      url: "https://github.com/kinoshita",
-    },
-    {
-      name: "Google Scholar",
-      url: "https://scholar.google.com/",
+      url: "https://github.com/whip27",
     },
     // {
     //   name: "X (Twitter)",
