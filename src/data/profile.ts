@@ -20,6 +20,12 @@ export interface AcademicActivity {
   period?: string;
 }
 
+export interface EducationItem {
+  period: string;
+  institution: string;
+  description: string;
+}
+
 export interface ProfileData {
   name: {
     ja: string;
@@ -41,6 +47,7 @@ export interface ProfileData {
   avatar: string;
   coverImage: string;
   interests?: string[];
+  education?: EducationItem[];
   email?: string;
   location?: string;
   publications: {
@@ -67,9 +74,9 @@ export const profileData: ProfileData = {
       url: "https://ohshimalab.github.io/",
     },
   },
-  bio: "兵庫県立大学 大学院情報科学研究科 博士前期課程 大島研究室所属の木下真帆です。情報検索・データ工学・展示物分析などの研究を行っています。",
+  bio: "兵庫県立大学 大学院情報科学研究科 博士前期課程 大島研究室の木下真帆です。情報系の研究を行っています。",
   aboutParagraphs: [
-    "兵庫県立大学 大学院情報科学研究科 博士前期課程、大島研究室所属の木下 真帆です。",
+    "兵庫県立大学 大学院情報科学研究科 博士前期課程、大島研究室所属の木下真帆です。",
     // "データ工学や情報統合、展示物の意外性分析（画像インペインティングや類似度・外れ値検出を用いた展示物の形状・外観分析）に関する研究を行っています。",
     // "このWebサイトでは、研究の進捗や論文・学会発表などの実績、各種プロフィールリンクを掲載しています。"
   ],
@@ -77,11 +84,21 @@ export const profileData: ProfileData = {
   coverImage: "cover.svg",
   location: "兵庫県 神戸市 (Hyogo, Japan)",
   interests: [
-    "おにく",
-    "おさかな",
-    "くだもの",
-    "てんぷら",
-    "はくまい"
+    "画像認識",
+    "自然言語処理",
+    "意外性",
+  ],
+  education: [
+    {
+      period: "2025年 4月 - 現在",
+      institution: "兵庫県立大学 大学院情報科学研究科",
+      description: "博士前期課程 在学（大島研究室）",
+    },
+    {
+      period: "2021年 4月 - 2025年 3月",
+      institution: "兵庫県立大学",
+      description: "卒業（学士）",
+    }
   ],
   publications: {
     international: [],

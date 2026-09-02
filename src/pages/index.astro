@@ -82,7 +82,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
           <div class="site-branding">
             <div class="wrap">
               <div class="site-branding-text">
-                <span class="site-badge">大学院生・研究プロフィール</span>
+                <span class="site-badge">プロフィール</span>
                 <h1 class="site-title"><a href={baseUrl}>{profileData.siteName}</a></h1>
                 <p class="site-description">{profileData.siteDescription}</p>
                 <div class="site-author-sub">
@@ -103,6 +103,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
             <nav id="site-navigation" class="main-navigation" aria-label="Top Menu">
               <ul id="top-menu" class="menu">
                 <li class="menu-item"><a href="#home">ホーム</a></li>
+                <li class="menu-item"><a href="#biography">略歴</a></li>
                 <li class="menu-item"><a href="#about">研究概要</a></li>
                 <li class="menu-item"><a href="#publications">研究業績</a></li>
                 <li class="menu-item"><a href="#activities">学術活動</a></li>
@@ -206,6 +207,30 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                 </div>
               </div>
             </article>
+
+            <!-- Panel 2: Biography / 略歴 -->
+            {profileData.education && profileData.education.length > 0 && (
+              <article id="biography" class="panel-section biography-panel">
+                <div class="wrap">
+                  <header class="entry-header">
+                    <h2 class="entry-title">略歴</h2>
+                  </header>
+                  <div class="entry-content">
+                    <div class="timeline-list">
+                      {profileData.education.map((item) => (
+                        <div class="timeline-item">
+                          <div class="timeline-period-badge">{item.period}</div>
+                          <div class="timeline-body">
+                            <h3 class="timeline-institution">{item.institution}</h3>
+                            <p class="timeline-desc">{item.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            )}
 
             <!-- Panel 2: Research Interests / Topics -->
             {profileData.interests && profileData.interests.length > 0 && (
@@ -336,7 +361,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                   ) : (
                     <div class="tba-box">
                       <span class="tba-tag">TBA</span>
-                      <p class="tba-msg">現在準備中です (To Be Announced)</p>
+                      <p class="tba-msg">現在準備中です</p>
                     </div>
                   )}
                 </div>
@@ -374,7 +399,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                   ) : (
                     <div class="tba-box">
                       <span class="tba-tag">TBA</span>
-                      <p class="tba-msg">現在準備中です (To Be Announced)</p>
+                      <p class="tba-msg">現在準備中です</p>
                     </div>
                   )}
                 </div>
@@ -794,20 +819,78 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
     background-color: var(--color-bg-panel);
   }
 
-  .topics-panel {
+  .biography-panel {
     background-color: var(--color-bg-panel-alt);
+  }
+
+  .topics-panel {
+    background-color: var(--color-bg-panel);
   }
 
   .publications-panel {
-    background-color: var(--color-bg-panel);
-  }
-
-  .activities-panel {
     background-color: var(--color-bg-panel-alt);
   }
 
-  .links-panel {
+  .activities-panel {
     background-color: var(--color-bg-panel);
+  }
+
+  .links-panel {
+    background-color: var(--color-bg-panel-alt);
+  }
+
+  /* Biography / 略歴 Timeline */
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.35rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    transition: all 0.15s ease;
+  }
+
+  .timeline-item:hover {
+    border-color: var(--color-text-accent);
+  }
+
+  .timeline-period-badge {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-accent);
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .timeline-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  .timeline-institution {
+    font-family: var(--font-heading);
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+
+  .timeline-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-body);
   }
 
   .entry-header {
@@ -1370,6 +1453,11 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
 
     .panel-section {
       padding: 3rem 0;
+    }
+
+    .timeline-item {
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .pub-header-row {
