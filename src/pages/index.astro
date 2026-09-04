@@ -96,8 +96,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
 
             <div class="hero-info-col">
               <div class="hero-meta-top">
-                <span class="hero-badge">大学院生・研究プロフィール</span>
-                <span class="hero-status-pill">博士前期課程</span>
+                <span class="hero-badge">プロフィール</span>
               </div>
 
               <div class="hero-name-row">
@@ -118,10 +117,6 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                   </span>
                 )}
               </p>
-
-              {profileData.aboutParagraphs && profileData.aboutParagraphs.length > 0 && (
-                <p class="hero-bio-text">{profileData.aboutParagraphs[0]}</p>
-              )}
 
               <div class="hero-chips-list">
                 {profileData.location && (
