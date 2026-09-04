@@ -157,11 +157,6 @@ export const profileData: ProfileData = {
       description: "国際研究者識別子 (0009-0007-9914-7609)"
     },
     {
-      name: "GitHub",
-      url: "https://github.com/whip27",
-      description: "コード・リポジトリ (@whip27)"
-    },
-    {
       name: "大島研究室 (Ohshima Lab.)",
       url: "https://ohshimalab.github.io/",
       description: "兵庫県立大学 大島研究室 公式Webサイト"
