@@ -296,11 +296,17 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                                     <span class="venue-name">{pub.venue}</span>
                                     <span class="venue-year">({pub.year})</span>
                                   </p>
+                                  {pub.award && (
+                                    <div class="pub-award-tag">
+                                      <span class="award-emoji">🏆</span>
+                                      <span class="award-text">{pub.award}</span>
+                                    </div>
+                                  )}
                                 </div>
-                                {pub.url && (
+                                {(pub.url || pub.doi) && (
                                   <div class="pub-actions">
-                                    <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-                                      <span>researchmapで見る</span>
+                                    <a href={pub.url || `https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                      <span>{pub.doi ? `DOI: ${pub.doi}` : '詳細を見る'}</span>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M7 17 17 7"></path>
                                         <path d="M7 7h10v10"></path>
@@ -340,11 +346,17 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                                     <span class="venue-name">{pub.venue}</span>
                                     <span class="venue-year">({pub.year})</span>
                                   </p>
+                                  {pub.award && (
+                                    <div class="pub-award-tag">
+                                      <span class="award-emoji">🏆</span>
+                                      <span class="award-text">{pub.award}</span>
+                                    </div>
+                                  )}
                                 </div>
                                 {pub.url && (
                                   <div class="pub-actions">
                                     <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-                                      <span>researchmapで見る</span>
+                                      <span>発表ページを見る</span>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M7 17 17 7"></path>
                                         <path d="M7 7h10v10"></path>
@@ -1206,6 +1218,31 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
     font-style: normal;
     font-family: var(--font-mono);
     font-size: 0.85rem;
+  }
+
+  .pub-award-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.65rem;
+    background: rgba(202, 138, 4, 0.1);
+    border: 1px solid rgba(202, 138, 4, 0.35);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ca8a04;
+    width: fit-content;
+    margin-top: 0.25rem;
+  }
+
+  :global(html.dark) .pub-award-tag {
+    background: rgba(234, 179, 8, 0.15);
+    border-color: rgba(234, 179, 8, 0.4);
+    color: #facc15;
+  }
+
+  .award-emoji {
+    font-size: 0.9rem;
   }
 
   .pub-actions {
