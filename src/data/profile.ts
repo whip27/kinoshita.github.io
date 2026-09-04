@@ -129,8 +129,9 @@ export const profileData: ProfileData = {
       {
         title: "線画特徴の自己教師あり学習による意外な形状の展示物発見",
         authors: ["木下 真帆", "桑田 若菜", "大島 裕明"],
-        venue: "第17回データ工学と情報マネジメントに関するフォーラム (DEIM2025)",
-        year: "2025年3月"
+        venue: "第17回データ工学と情報マネジメントに関するフォーラム (DEIM2025), 7G-01",
+        year: "2025年3月",
+        url: "https://pub.confit.atlas.jp/ja/event/deim2025/presentation/7G-01"
       }
     ]
   },
