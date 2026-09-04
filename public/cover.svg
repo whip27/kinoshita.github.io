@@ -1,53 +1,144 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 640" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="deepSpace" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#07090e" />
-      <stop offset="40%" stop-color="#0f1422" />
-      <stop offset="80%" stop-color="#181c2b" />
-      <stop offset="100%" stop-color="#0a0d14" />
+    <!-- Deep Space Gradients -->
+    <linearGradient id="spaceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070e" />
+      <stop offset="35%" stop-color="#090d1a" />
+      <stop offset="70%" stop-color="#111728" />
+      <stop offset="100%" stop-color="#060810" />
     </linearGradient>
-    <radialGradient id="nebulaGlow1" cx="30%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25" />
-      <stop offset="50%" stop-color="#1d4ed8" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#07090e" stop-opacity="0" />
+
+    <!-- Glowing Nebulae -->
+    <radialGradient id="nebulaBlue" cx="25%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.32" />
+      <stop offset="45%" stop-color="#1d4ed8" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#05070e" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="nebulaGlow2" cx="75%" cy="60%" r="50%">
-      <stop offset="0%" stop-color="#ca8a04" stop-opacity="0.2" />
-      <stop offset="60%" stop-color="#854d0e" stop-opacity="0.05" />
-      <stop offset="100%" stop-color="#07090e" stop-opacity="0" />
+
+    <radialGradient id="nebulaIndigo" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#4338ca" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#05070e" stop-opacity="0" />
     </radialGradient>
-    <pattern id="dotGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.07" />
+
+    <radialGradient id="nebulaCyan" cx="50%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.18" />
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#05070e" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="nebulaAmber" cx="90%" cy="20%" r="35%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.15" />
+      <stop offset="60%" stop-color="#d97706" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#05070e" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Star Glow Filter -->
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.8" fill="#ffffff" fill-opacity="0.06" />
     </pattern>
+
+    <!-- Star Flare Cross Template -->
+    <g id="sparkleStar">
+      <ellipse cx="0" cy="0" rx="6" ry="1" fill="#ffffff" fill-opacity="0.8" />
+      <ellipse cx="0" cy="0" rx="1" ry="6" fill="#ffffff" fill-opacity="0.8" />
+      <circle cx="0" cy="0" r="1.5" fill="#ffffff" />
+    </g>
   </defs>
 
-  <!-- Background Base -->
-  <rect width="100%" height="100%" fill="url(#deepSpace)" />
-  <rect width="100%" height="100%" fill="url(#nebulaGlow1)" />
-  <rect width="100%" height="100%" fill="url(#nebulaGlow2)" />
+  <!-- Background Base & Nebulae -->
+  <rect width="100%" height="100%" fill="url(#spaceGradient)" />
+  <rect width="100%" height="100%" fill="url(#nebulaBlue)" />
+  <rect width="100%" height="100%" fill="url(#nebulaIndigo)" />
+  <rect width="100%" height="100%" fill="url(#nebulaCyan)" />
+  <rect width="100%" height="100%" fill="url(#nebulaAmber)" />
   <rect width="100%" height="100%" fill="url(#dotGrid)" />
 
-  <!-- Subtle Constellation / Geometric Lines -->
-  <g stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" fill="none">
-    <path d="M 120 280 L 260 220 L 420 310 L 580 180 L 740 240 L 920 150 L 1150 220 L 1380 160 L 1600 270 L 1800 210" />
-    <circle cx="120" cy="280" r="3" fill="#ffffff" fill-opacity="0.4" />
-    <circle cx="260" cy="220" r="4" fill="#60a5fa" fill-opacity="0.6" />
-    <circle cx="420" cy="310" r="3" fill="#ffffff" fill-opacity="0.4" />
-    <circle cx="580" cy="180" r="4" fill="#fde047" fill-opacity="0.6" />
-    <circle cx="740" cy="240" r="3" fill="#ffffff" fill-opacity="0.4" />
-    <circle cx="920" cy="150" r="5" fill="#60a5fa" fill-opacity="0.7" />
-    <circle cx="1150" cy="220" r="3" fill="#ffffff" fill-opacity="0.4" />
-    <circle cx="1380" cy="160" r="4" fill="#fde047" fill-opacity="0.6" />
-    <circle cx="1600" cy="270" r="3" fill="#ffffff" fill-opacity="0.4" />
-    <circle cx="1800" cy="210" r="4" fill="#ffffff" fill-opacity="0.5" />
+  <!-- Constellation Network 1 -->
+  <g stroke="#ffffff" stroke-opacity="0.14" stroke-width="1" fill="none">
+    <path d="M 80 160 L 220 90 L 360 210 L 520 120 L 710 190 L 890 80 L 1100 170 L 1320 100 L 1550 230 L 1760 140" />
+    <path d="M 220 90 L 310 320 L 520 120 L 640 280 L 890 80 L 1020 290 L 1320 100 L 1450 310" stroke-dasharray="3 3" stroke-opacity="0.08" />
   </g>
 
-  <!-- Bottom Vignette Fade -->
-  <linearGradient id="fadeDown" x1="0" y1="0" x2="0" y2="1">
+  <!-- Constellation Network 2 -->
+  <g stroke="#38bdf8" stroke-opacity="0.12" stroke-width="1" fill="none">
+    <path d="M 450 420 L 620 360 L 780 440 L 960 380 L 1220 450 L 1400 390 L 1650 460" />
+  </g>
+
+  <!-- Major Star Nodes & Flares -->
+  <g fill="#ffffff">
+    <!-- Star Group 1 -->
+    <use href="#sparkleStar" x="220" y="90" transform="scale(1.3)" filter="url(#starGlow)" />
+    <circle cx="220" cy="90" r="4" fill="#93c5fd" />
+    
+    <use href="#sparkleStar" x="520" y="120" transform="scale(1.1)" filter="url(#starGlow)" />
+    <circle cx="520" cy="120" r="3.5" fill="#fde047" />
+
+    <use href="#sparkleStar" x="890" y="80" transform="scale(1.5)" filter="url(#starGlow)" />
+    <circle cx="890" cy="80" r="5" fill="#67e8f9" />
+
+    <use href="#sparkleStar" x="1320" y="100" transform="scale(1.2)" filter="url(#starGlow)" />
+    <circle cx="1320" cy="100" r="4" fill="#fde047" />
+
+    <use href="#sparkleStar" x="1760" y="140" transform="scale(1.4)" filter="url(#starGlow)" />
+    <circle cx="1760" cy="140" r="4.5" fill="#93c5fd" />
+    
+    <!-- Secondary Nodes -->
+    <circle cx="80" cy="160" r="2.5" fill="#ffffff" fill-opacity="0.8" />
+    <circle cx="360" cy="210" r="3" fill="#ffffff" fill-opacity="0.85" />
+    <circle cx="710" cy="190" r="3" fill="#93c5fd" fill-opacity="0.9" />
+    <circle cx="1100" cy="170" r="3.5" fill="#ffffff" fill-opacity="0.85" />
+    <circle cx="1550" cy="230" r="3" fill="#ffffff" fill-opacity="0.8" />
+
+    <circle cx="310" cy="320" r="2" fill="#38bdf8" fill-opacity="0.7" />
+    <circle cx="640" cy="280" r="2.5" fill="#ffffff" fill-opacity="0.7" />
+    <circle cx="1020" cy="290" r="2.5" fill="#fde047" fill-opacity="0.75" />
+    <circle cx="1450" cy="310" r="2" fill="#67e8f9" fill-opacity="0.7" />
+  </g>
+
+  <!-- Small Background Stars Scatter -->
+  <g fill="#ffffff">
+    <circle cx="50" cy="60" r="1" fill-opacity="0.6" />
+    <circle cx="140" cy="240" r="1.2" fill-opacity="0.8" />
+    <circle cx="180" cy="400" r="0.8" fill-opacity="0.5" />
+    <circle cx="280" cy="160" r="1.5" fill-opacity="0.7" />
+    <circle cx="340" cy="80" r="1" fill-opacity="0.6" />
+    <circle cx="410" cy="290" r="1.3" fill-opacity="0.8" />
+    <circle cx="480" cy="500" r="1" fill-opacity="0.5" />
+    <circle cx="590" cy="60" r="1.4" fill-opacity="0.75" />
+    <circle cx="660" cy="180" r="0.9" fill-opacity="0.6" />
+    <circle cx="760" cy="310" r="1.2" fill-opacity="0.8" />
+    <circle cx="830" cy="220" r="1.6" fill-opacity="0.9" />
+    <circle cx="940" cy="260" r="1" fill-opacity="0.6" />
+    <circle cx="1000" cy="100" r="1.3" fill-opacity="0.75" />
+    <circle cx="1060" cy="420" r="0.9" fill-opacity="0.5" />
+    <circle cx="1180" cy="80" r="1.5" fill-opacity="0.85" />
+    <circle cx="1240" cy="260" r="1.1" fill-opacity="0.7" />
+    <circle cx="1290" cy="490" r="0.8" fill-opacity="0.5" />
+    <circle cx="1390" cy="200" r="1.4" fill-opacity="0.8" />
+    <circle cx="1480" cy="90" r="1.2" fill-opacity="0.7" />
+    <circle cx="1520" cy="380" r="1" fill-opacity="0.6" />
+    <circle cx="1630" cy="120" r="1.6" fill-opacity="0.85" />
+    <circle cx="1700" cy="300" r="1.2" fill-opacity="0.7" />
+    <circle cx="1790" cy="420" r="0.9" fill-opacity="0.5" />
+    <circle cx="1850" cy="90" r="1.3" fill-opacity="0.8" />
+    <circle cx="1890" cy="250" r="1" fill-opacity="0.6" />
+  </g>
+
+  <!-- Bottom Vignette / Gradient Fade -->
+  <linearGradient id="fadeDown" x1="0%" y1="0%" x2="0%" y2="1">
     <stop offset="0%" stop-color="#000000" stop-opacity="0" />
-    <stop offset="70%" stop-color="#000000" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#07090e" stop-opacity="0.9" />
+    <stop offset="60%" stop-color="#000000" stop-opacity="0.2" />
+    <stop offset="100%" stop-color="#05070e" stop-opacity="0.85" />
   </linearGradient>
   <rect width="100%" height="100%" fill="url(#fadeDown)" />
 </svg>
-
