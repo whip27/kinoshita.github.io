@@ -232,10 +232,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                               <span class="venue-date">({pub.year})</span>
                             </p>
                             {pub.award && (
-                              <div class="award-pill">
-                                <span class="award-ico">🏆</span>
-                                <span class="award-name">{pub.award}</span>
-                              </div>
+                              <p class="pub-award-note">{pub.award}</p>
                             )}
                             {(pub.url || pub.doi) && (
                               <div class="pub-actions-row">
@@ -279,10 +276,7 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
                               <span class="venue-date">({pub.year})</span>
                             </p>
                             {pub.award && (
-                              <div class="award-pill">
-                                <span class="award-ico">🏆</span>
-                                <span class="award-name">{pub.award}</span>
-                              </div>
+                              <p class="pub-award-note">{pub.award}</p>
                             )}
                             {pub.url && (
                               <div class="pub-actions-row">
@@ -1246,25 +1240,10 @@ const hasActivities = (profileData.activities?.length ?? 0) > 0;
     margin-left: 0.25rem;
   }
 
-  .award-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.2rem 0.65rem;
-    background: rgba(202, 138, 4, 0.08);
-    border: 1px solid rgba(202, 138, 4, 0.3);
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #ca8a04;
-    width: fit-content;
-    margin-top: 0.2rem;
-  }
-
-  :global(html.dark) .award-pill {
-    color: #facc15;
-    border-color: rgba(234, 179, 8, 0.35);
-    background: rgba(234, 179, 8, 0.12);
+  .pub-award-note {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
   }
 
   .pub-actions-row {
